@@ -1,0 +1,29 @@
+{
+    "name": "toiladev/module-blog",
+    "description": "Moduler Blog for ToiLaDev",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mr. VnS",
+            "email": "mrvns@live.com"
+        }
+    ],
+    "require": {
+        "toiladev/core": "^1.0",
+        "toiladev/module-comment": "dev-main",
+        "kalnoy/nestedset": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ToiLaDev\\Blog\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ToiLaDev\\Blog\\ServiceProvider"
+            ]
+        }
+    }
+}
