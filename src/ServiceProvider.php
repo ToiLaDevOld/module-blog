@@ -26,13 +26,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 'icon'      => 'file',
                 'permission'=> 'blog.view',
                 'children'  => [
-                    'site'      => [
+                    'posts'      => [
                         'title'     => 'All Posts',
                         'route'     => 'admin.blog.posts.index',
                         'icon'      => 'circle',
                         'permission'=> 'blog.view'
                     ],
-                    'services'  => [
+                    'categories'  => [
                         'title'     => 'Categories',
                         'route'     => 'admin.blog.categories.index',
                         'icon'      => 'circle',
@@ -53,11 +53,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 //        ]
 //    ];
 
-//    private $widgets = [
-//        'blog-categories'   => [Blog::class, 'categories'],
-//        'blog-recent-posts'   => [Blog::class, 'recentPosts'],
-//        'blog-search'   => [Blog::class, 'search'],
-//    ];
+    private $widgets = [
+        'blog-categories'   => [Blog::class, 'categories'],
+        'blog-recent-posts'   => [Blog::class, 'recentPosts'],
+        'blog-search'   => [Blog::class, 'search'],
+    ];
 
     //private $theme = true;
 }

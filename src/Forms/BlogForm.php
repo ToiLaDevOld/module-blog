@@ -31,7 +31,7 @@ class BlogForm
         $form->add(new Text('name', same: 'title', slug: 'slug'));
         $form->add(new Text('slug'));
         $form->add(new Text('title'));
-        $form->add(new Select('categories', multiple: true, options: $this->blogService->toSelect($categories)));
+        $form->add(new Select('categories', multiple: true, options: toSelect($categories->toFlatTree())));
         $form->add(new Textarea('excerpt'));
         $form->add(new Quill('body'));
         $form->add(new Image());
@@ -59,7 +59,7 @@ class BlogForm
             $form->add(new Text('name', same: 'title', slug: 'slug', value: $post->name));
             $form->add(new Text('slug', value: $post->slug));
             $form->add(new Text('title', value: $post->title));
-            $form->add(new Select('categories', multiple: true, options: $this->blogService->toSelect($categories), value: $this->blogService->idCategories($post)));
+            $form->add(new Select('categories', multiple: true, options: toSelect($categories->toFlatTree()), value: $this->blogService->idCategories($post)));
             $form->add(new Textarea('excerpt', value: $post->excerpt));
             $form->add(new Quill('body', value: $post->body));
             $form->add(new Image(value: $post->image));
@@ -79,7 +79,7 @@ class BlogForm
         $form->add(new Text('slug'));
         $form->add(new Text('title'));
         $form->add(new Textarea('excerpt'));
-        $form->add(new Select('parent_id', title: 'Parent', multiple: true, options: $this->blogService->toSelect($categories), default: '_____'));
+        $form->add(new Select('parent_id', title: 'Parent', multiple: true, options: toSelect($categories->toFlatTree()), default: '_____'));
         $form->add(new Image());
 
         return $form->render();
@@ -105,7 +105,7 @@ class BlogForm
             $form->add(new Text('name', same: 'title', slug: 'slug', value: $category->name));
             $form->add(new Text('slug', value: $category->slug));
             $form->add(new Text('title', value: $category->title));
-            $form->add(new Select('parent_id', title: 'Parent', multiple: true, options: $this->blogService->toSelect($categories), value: $category->parent_id, default: '_____'));
+            $form->add(new Select('parent_id', title: 'Parent', multiple: true, options: toSelect($categories->toFlatTree()), value: $category->parent_id, default: '_____'));
             $form->add(new Textarea('excerpt', value: $category->excerpt));
             $form->add(new Image(value: $category->image));
 

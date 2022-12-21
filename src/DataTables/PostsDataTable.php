@@ -28,6 +28,6 @@ class PostsDataTable extends BaseDataTable
 
     public function query(PostRepository $repository): Builder
     {
-        return $repository->datatable();
+        return $repository->datatable('cast');
     }
 }

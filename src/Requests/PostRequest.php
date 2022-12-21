@@ -18,7 +18,7 @@ class PostRequest extends FormRequest
         return [
             'name' => 'required',
             'slug' => 'required|unique:casts,slug' . (empty($id)?',NULL,id,deleted_at,NULL':",{$id},castable_id,deleted_at,NULL"),
-            'title' => 'required|unique:blog-posts,title' . (empty($id)?',NULL,id,deleted_at,NULL':",{$id},id,deleted_at,NULL"),
+            'title' => 'required|unique:blog_posts,title' . (empty($id)?',NULL,id,deleted_at,NULL':",{$id},id,deleted_at,NULL"),
             'excerpt' => 'required',
             'body' => 'required',
         ];

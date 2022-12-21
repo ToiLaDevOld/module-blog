@@ -16,11 +16,14 @@ class PostController extends Controller
         $this->blogService = $blogService;
         parent::__construct();
     }
+
     public function displayView(BlogPost $post) {
         $post->load(['owner:id,first_name,last_name,email,avatar', 'categories:id,name', 'categories.cast']);
         return moduleView('post' , ['post' => $post]);
     }
-    public function index() {
-        return moduleView('list');
+
+    public function index($page = 1) {
+        $posts = BlogPost::paginate(page: $page);
+        return moduleView('list', ['posts' => $posts]);
     }
 }

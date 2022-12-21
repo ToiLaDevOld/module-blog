@@ -82,28 +82,8 @@ class BlogService extends RepositoryService implements BlogServiceImpl
         return $this->secondRepo->newQuery()->withDepth()->defaultOrder()->get();
     }
 
-    public function toSelect($categories) {
-        $categories = $categories->toFlatTree();
-        $options = [];
-        foreach ($categories as $category) {
-            $options[] = [
-                'title' => $this->depthName($category->name, $category->depth),
-                'value' => $category->id
-            ];
-        }
-        return $options;
-    }
-
     public function toTree($categories) {
         return $categories->toTree();
-    }
-
-    protected function depthName($name, $depth, $prefix = '-') {
-        while ($depth > 0) {
-            $depth--;
-            $name = $prefix . $name;
-        }
-        return $name;
     }
 
     public function idCategories($post) {
